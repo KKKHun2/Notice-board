@@ -10,10 +10,12 @@ if(res.method =='POST'){
     }
     try{
         const db = (await connectDB).db("forum")
+        
         let result = await db.collection('post').insertOne(res.body)
         req.redirect(302, '/list')
     }
     catch(error){   
+        req.status(400).json('서버오류')
     }
     }
 }
