@@ -12,10 +12,10 @@ export default async function Edit(props){
             <h4>수정페이지</h4>
             <form action="/api/post/edit" method="POST" >
                 <h4>제목</h4>
-                <input name="title" defaultValue={result.title}/>
+                <input name="title" defaultValue={result?result.title:null}/>
                 <h4>내용</h4>
-                <input name="content" defaultValue={result.content}/>
-                <input style={{display:"none"}}name="_id" defaultValue={result._id.toString()}/>
+                <input name="content" defaultValue={result?result.content:null}/>
+                <input style={{display:"none"}}name="_id" defaultValue={result?result._id.toString():null}/>
                 <button type="submit">수정</button>
             </form>
         </div>
