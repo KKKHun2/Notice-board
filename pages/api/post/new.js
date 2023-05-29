@@ -1,6 +1,13 @@
 import { connectDB } from "@/util/database";
+import { authOptions } from "../auth/[...nextauth]";
+import {getServerSession} from "next-auth"
 
 export default async function handler(res,req){
+   let session =  await getServerSession(res, req, authOptions)
+   if(session){
+    res.body.author = session.user.email
+   }
+
 if(res.method =='POST'){
     if(res.body.title ==''){
         return req.status(500).json('제목이 없습니다.')
@@ -10,7 +17,7 @@ if(res.method =='POST'){
     }
     try{
         const db = (await connectDB).db("forum")
-        
+
         let result = await db.collection('post').insertOne(res.body)
         req.redirect(302, '/list')
     }
