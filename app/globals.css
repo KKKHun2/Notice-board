@@ -65,3 +65,18 @@ a{
   opacity: 1;
   transition: all 1s;
 }
+.commentForm{
+  background-color: white;
+  width:50%;
+  height: 100%;
+  border:#565758;
+}
+.commentName{
+  font-size: 20px;
+  margin-left: 65%;
+  margin-top: -40px;
+}
+.commentContent{
+  margin-left: 20px;
+  font-size: 27px;
+}
