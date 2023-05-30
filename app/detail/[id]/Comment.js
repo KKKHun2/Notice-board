@@ -1,6 +1,8 @@
 "use client";
 
 import {useEffect,useState} from 'react'
+// import "styled-components";
+// import { ServerStyleSheet } from "styled-components";
 
 export default function Comment(props){
   
@@ -30,19 +32,31 @@ export default function Comment(props){
         
             <div>
                 <div>댓글 목록</div>
+                
+
                 {
                     comments.length>0?
                     comments.map((a,i)=>
-                            <p key = {i}>작성자:{a.name} 내용:{a.content} </p>
-                            
+                    <div className='commentForm'>
+                            <p className='commentContent' key = {i}>댓글:{a.content} </p>
+                            <p className='commentName' key = {i}>작성자:{a.name}  </p>
+                            </div>
                         )
                         : "댓글이 없습니다."
                 }
-                
+                </div>
                 <input value = {comment}onChange={(e)=>{setComment(e.target.value)}} />
                     <button onClick={handleReset}>
                        작성완료</button>
             </div>
-        </div>
+        
     )
 }
+
+// const CommentForm=styled.div`
+
+// background-color:  white;
+// width:100%;
+// height: 100%;
+
+// `
